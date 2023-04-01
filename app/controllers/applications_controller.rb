@@ -3,15 +3,24 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @application = Application.create(application_params)
-    redirect_to "/applications/#{@application.id}"
+    @application = Application.new(application_params)
+
+    if @application.valid?
+      @application.save
+      redirect_to "/applications/#{@application.id}"
+    else
+      flash[:message] = @application.errors.full_messages.join(', ')
+      render :new
+    end
   end
 
   def show
     @application = Application.find(params[:id])
   end
 
+  private
+
   def application_params
-    params.permit(:id, :name, :street_address, :city, :state, :zipcode, :description)
+    params.permit(:id, :name, :street_address, :city, :state, :zipcode, :home_description)
   end
 end

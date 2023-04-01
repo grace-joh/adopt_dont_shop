@@ -15,8 +15,9 @@
   <%= f.label :zipcode %>
   <%= f.text_field :zipcode %>
   <br>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <%= f.label "What makes your home a good home?" %>
+  <br>
+  <%= f.text_field :home_description %>
   <br>
   <%= f.submit 'Submit' %>
 <% end %>

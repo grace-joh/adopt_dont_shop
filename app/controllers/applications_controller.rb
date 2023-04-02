@@ -20,15 +20,14 @@ class ApplicationsController < ApplicationController
   end
 
   def update
-    @application = Application.find(params[:id])
-    @pet = Pet.find(params[:pet_id])
-    ApplicationPet.create!(application_id: @application.id, pet_id: @pet.id)
-    redirect_to "/applications/#{@application.id}"
+    application = Application.find(params[:id])
+    application.update(application_params)
+    redirect_to "/applications/#{application.id}"
   end
 
   private
 
   def application_params
-    params.permit(:id, :name, :street_address, :city, :state, :zipcode, :home_description)
+    params.permit(:id, :name, :street_address, :city, :state, :zipcode, :home_description, :status, :owner_description)
   end
 end

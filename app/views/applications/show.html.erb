@@ -12,4 +12,10 @@
   <%= render "pets_to_adopt" %>
 <% end %>
 <br>
-<%= render "pet_search" %>
+<% if @application.status == "In Progress" %>
+  <%= render "pet_search" %>
+  <br>
+  <% unless @application.pets.empty? %>
+    <%= render "submit_app" %>
+  <% end %>
+<% end %>

@@ -1,0 +1,9 @@
+<h3>Submit Application</h3>
+<%= form_with url: "/applications/#{@application.id}", method: :patch, local: true do |f| %>
+  <%= f.hidden_field :status, value: "Pending" %>
+  <%= f.label :owner_description, "What makes you a good owner for the pet(s) you want to adopt?" %>
+  <br>
+  <%= f.text_field :owner_description %>
+  <br>
+  <%= f.submit 'Submit Application' %>
+<% end %>

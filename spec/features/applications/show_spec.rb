@@ -50,4 +50,22 @@ RSpec.describe 'application show page' do
       expect(page).to have_link('Luna')
     end
   end
+
+  describe 'User story 6' do
+    it 'I see a section to submit my application' do
+      expect(page).to have_content('What makes you a good owner for the pet(s) you want to adopt?')
+
+      fill_in :owner_description, with: 'I have a big backyard'
+      click_on 'Submit Application'
+
+      expect(current_path).to eq("/applications/#{@app1.id}")
+      expect(page).to have_content('Status: Pending')
+    end
+
+    it 'doesnt have a section to submit if no pets are added' do
+      visit "/applications/#{@app5.id}"
+
+      expect(page).to_not have_content('What makes you a good owner for the pet(s) you want to adopt?')
+    end
+  end
 end

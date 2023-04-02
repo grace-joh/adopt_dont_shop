@@ -49,5 +49,16 @@ RSpec.describe 'application show page' do
       expect(page).to have_link('Collins')
       expect(page).to have_link('Luna')
     end
+
+    describe 'User story 8' do
+      it 'I search for pets by name and I see any pet 
+        whose name PARTIALLY matches my search' do
+        fill_in 'Search pet name', with: 'Frey'
+        click_on 'Search'
+
+        expect(current_path).to eq("/applications/#{@app1.id}")
+        expect(page).to have_link('Freyja')
+      end
+    end
   end
 end

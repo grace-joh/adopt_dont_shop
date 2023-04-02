@@ -16,7 +16,14 @@ class ApplicationsController < ApplicationController
 
   def show
     @application = Application.find(params[:id])
-    @pets = Pet.where("name = ?", params[:search_pet_name])
+    @pets = Pet.where('name = ?', params[:search_pet_name])
+  end
+
+  def update
+    @application = Application.find(params[:id])
+    @pet = Pet.find(params[:pet_id])
+    ApplicationPet.create!(application_id: @application.id, pet_id: @pet.id)
+    redirect_to "/applications/#{@application.id}"
   end
 
   private

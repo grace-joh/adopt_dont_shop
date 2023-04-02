@@ -24,6 +24,8 @@ RSpec.describe Pet, type: :model do
     describe '#search' do
       it 'returns partial matches' do
         expect(Pet.search("Claw")).to eq([@pet_2])
+        expect(Pet.search("Cl")).to eq([@pet_2])
+        expect(Pet.search("claw")).to eq([@pet_2])
       end
     end
 

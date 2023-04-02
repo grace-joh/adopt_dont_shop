@@ -155,4 +155,14 @@ def test_data
                               zipcode: '55414',
                               home_description: 'My dog needs a sibling',
                               status: 'In Progress')
+
+  # Application Pets
+  @app_pet1 = ApplicationPet.create!(application: @app1, pet: @pet1)
+  @app_pet2 = ApplicationPet.create!(application: @app1, pet: @pet2)
+  @app_pet3 = ApplicationPet.create!(application: @app2, pet: @pet3)
+  @app_pet4 = ApplicationPet.create!(application: @app3, pet: @pet10)
+  @app_pet5 = ApplicationPet.create!(application: @app3, pet: @pet11)
+  @app_pet6 = ApplicationPet.create!(application: @app3, pet: @pet12)
+  @app_pet7 = ApplicationPet.create!(application: @app4, pet: @pet3)
+  @app_pet8 = ApplicationPet.create!(application: @app4, pet: @pet5)
 end

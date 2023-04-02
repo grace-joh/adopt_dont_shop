@@ -7,5 +7,5 @@
 
 <% @pets.each do |pet| %>
   <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-  <%= button_to "Adopt me. I'm lovable!", "/applications/#{@application.id}/pets", params = { pet_id: pet.id }, method: :post %>
+  <%= button_to "Adopt me. I'm lovable!", "/applications/#{@application.id}/pets?pet_id=#{pet.id}" %>
 <% end %>

@@ -1,4 +1,4 @@
-<p>Add a Pet to this Application</p>
+<h3>Add a Pet to this Application</h3>
 <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
   <%= f.label :search_pet_name %>
   <%= f.text_field :search_pet_name%>
@@ -7,5 +7,5 @@
 
 <% @pets.each do |pet| %>
   <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-  <%= button_to "Adopt me. I'm lovable!", params = { pet_id: pet.id }, method: "patch" %>
+  <%= button_to "Adopt me. I'm lovable!", "/applications/#{@application.id}/pets", params = { pet_id: pet.id }, method: :post %>
 <% end %>

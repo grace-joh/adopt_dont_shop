@@ -1,0 +1,7 @@
+<div>
+  <p>I want to adopt:</p>
+  <% @application.pets.each do |pet| %>
+    <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+    <br>
+  <% end %>
+</div>

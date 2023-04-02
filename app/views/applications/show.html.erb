@@ -9,23 +9,7 @@
 <p>Why my home makes a good home: <%= @application.home_description %></p>
 <br>
 <% unless @application.pets.empty? %>
-  <div>
-    <p>I want to adopt:</p>
-    <% @application.pets.each do |pet| %>
-      <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-      <br>
-    <% end %>
-  </div>
+  <%= render "pets_to_adopt" %>
 <% end %>
 <br>
-<p>Add a Pet to this Application</p>
-<%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
-  <%= f.label :search_pet_name %>
-  <%= f.text_field :search_pet_name%>
-  <%= f.submit "Search" %>
-<% end %>
-
-<% @pets.each do |pet| %>
-  <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-  <%= button_to "Adopt me. I'm lovable!", params = { pet_id: pet.id }, method: "patch" %>
-<% end %>
+<%= render "pet_search" %>

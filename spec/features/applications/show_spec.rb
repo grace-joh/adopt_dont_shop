@@ -60,5 +60,15 @@ RSpec.describe 'application show page' do
         expect(page).to have_link('Freyja')
       end
     end
+
+    describe 'User story 9' do
+      it 'I search for pets by name and my search is case insensitive' do
+        fill_in 'Search pet name', with: 'collins'
+        click_on 'Search'
+
+        expect(current_path).to eq("/applications/#{@app1.id}")
+        expect(page).to have_link('Collins')
+      end
+    end
   end
 end

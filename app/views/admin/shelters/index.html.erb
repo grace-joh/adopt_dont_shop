@@ -5,3 +5,12 @@
     <h3><%= shelter.name %></h3>
   </div>
 <% end %>
+
+<h1>Shelters with Pending Applications</h1>
+<% if @shelters_app_pending.empty? %>
+  <p>No shelters have pending applications.</p>
+<% else %>
+  <% @shelters_app_pending.each do |shelter| %>
+    <h3><%= shelter.name %></h3>
+  <% end %>
+<% end %>

@@ -4,14 +4,7 @@ class ApplicationsController < ApplicationController
 
   def create
     @application = Application.new(application_params)
-
-    if @application.valid?
-      @application.save
-      redirect_to "/applications/#{@application.id}"
-    else
-      flash[:message] = @application.errors.full_messages.join(', ')
-      render :new
-    end
+    save_or_error(@application)
   end
 
   def show
@@ -29,5 +22,14 @@ class ApplicationsController < ApplicationController
 
   def application_params
     params.permit(:id, :name, :street_address, :city, :state, :zipcode, :home_description, :status, :owner_description)
+  end
+
+  def save_or_error(app)
+    if app.save
+      redirect_to "/applications/#{app.id}"
+    else
+      flash[:message] = app.errors.full_messages.join(', ')
+      render :new
+    end
   end
 end

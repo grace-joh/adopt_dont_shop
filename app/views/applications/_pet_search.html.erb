@@ -5,7 +5,9 @@
   <%= f.submit "Search" %>
 <% end %>
 
-<% @pets.each do |pet| %>
-  <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-  <%= button_to "Adopt me. I'm lovable!", "/applications/#{@application.id}/pets?pet_id=#{pet.id}" %>
+<% unless @pets.nil? %>
+  <% @pets.each do |pet| %>
+    <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+    <%= button_to "Adopt me. I'm lovable!", "/applications/#{@application.id}/pets?pet_id=#{pet.id}", method: :post %>
+  <% end %>
 <% end %>

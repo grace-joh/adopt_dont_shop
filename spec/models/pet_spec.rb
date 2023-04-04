@@ -41,13 +41,21 @@ RSpec.describe Pet, type: :model do
       it 'returns the shelter name for the given pet' do
         expect(@pet_3.shelter_name).to eq(@shelter_1.name)
       end
-      
-      # describe '.status' do
-      #   it 'returns the approval status of the pet' do
-      #     expect(@pet_1.status(@app3_id)).to eq("pending")
-      #   end
-      # end
-    end
 
+    describe '.status' do
+      it 'returns the approval status of the pet' do
+        app1 = Application.create!(name: 'Grace Joh',
+                                   street_address: '1949 Bark St',
+                                   city: 'Minneapolis',
+                                   state: 'MN',
+                                   zipcode: '55414',
+                                   home_description: 'I am super nice to animals.',
+                                   status: 'In Progress')
+        ApplicationPet.create!(application: app1, pet: @pet_1)
+
+        expect(@pet_1.status(app1.id)).to eq('pending')
+      end
+    end
+    end
   end
 end

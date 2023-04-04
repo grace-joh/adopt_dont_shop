@@ -12,4 +12,9 @@ class Pet < ApplicationRecord
   def self.adoptable
     where(adoptable: true)
   end
+
+  def status(app_id)
+    app_pet = ApplicationPet.find_by("pet_id = ? and application_id = ?", id, app_id)
+    app_pet.pet_status
+  end
 end

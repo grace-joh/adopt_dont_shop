@@ -12,7 +12,7 @@ RSpec.describe "admin/application show page" do
 
       expect(current_path).to eq("/admin/applications/#{@app1.id}")
       expect(page).to_not have_button("Approve #{@pet1.name}")
-      expect(page).to have_content("#{pet1.name} has been approved!")
+      expect(page).to have_content("#{@pet1.name} has been approved!")
     end
   end
 end

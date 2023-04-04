@@ -1,8 +1,11 @@
 <% @app_pets.each do |pet| %>
   <%= pet.name %>
   <%  if pet.status(@application.id) == "pending" %>
-    <%= button_to "Approve #{pet.name}", "/admin/applications/#{@application.id}?pet_id=#{pet.id}", method: :patch %>
+    <%= button_to "Approve #{pet.name}", "/admin/applications/#{@application.id}?approved=#{pet.id}", method: :patch %>
+    <%= button_to "Reject #{pet.name}", "/admin/applications/#{@application.id}?rejected=#{pet.id}", method: :patch %>
   <% elsif pet.status(@application.id) == "approved"%>
     <p><%= pet.name %> has been approved!</p>
+  <% elsif pet.status(@application.id) == "rejected"%>
+    <p><%= pet.name %> has been rejected &#x1F622;</p>
   <% end %>
 <% end %>

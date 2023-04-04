@@ -35,7 +35,7 @@ ApplicationPet.destroy_all
                             state: 'MN',
                             zipcode: '55414',
                             home_description: 'I am super nice to animals.',
-                            status: 'In Progress')
+                            status: 'Pending')
 @app2 = Application.create!(name: 'Logan Cole',
                             street_address: '1459 Catnap St',
                             city: 'Dallas',

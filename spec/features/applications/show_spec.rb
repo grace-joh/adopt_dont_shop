@@ -28,7 +28,9 @@ RSpec.describe 'application show page' do
       click_on 'Search'
 
       expect(current_path).to eq("/applications/#{@app1.id}")
-      expect(page).to have_link('Luna')
+      within("div#pet-#{@pet11.id}") do
+        expect(page).to have_link('Luna')
+      end
     end
   end
 

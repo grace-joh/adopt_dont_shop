@@ -1,3 +1,16 @@
+<h1>Application #<%= @application.id %></h1>
+
+<p>Status: <%= @application.status %></p>
+<br>
+<p>Name: <%= @application.name %></p>
+<br>
+<p>Address: <%= "#{@application.street_address} #{@application.city}, #{@application.state} #{@application.zipcode}" %></p>
+<br>
+<p>Why my home makes a good home: <%= @application.home_description %></p>
+<br>
+<p>Why I would be a good owner for the pet(s) listed below: <%= @application.owner_description %></p>
+<br>
+<p>Pet(s) on this application:</p>
 <% @app_pets.each do |pet| %>
   <%= pet.name %>
   <%  if pet.status(@application.id) == "pending" %>

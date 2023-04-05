@@ -8,6 +8,10 @@
 <br>
 <p>Why my home makes a good home: <%= @application.home_description %></p>
 <br>
+<% if @application.status == "Pending" %>
+  <p>Why I would be a good owner for the pet(s) listed below: <%= @application.owner_description %></p>
+<% end %>
+<br>
 <% unless @application.pets.empty? %>
   <%= render "pets_to_adopt" %>
 <% end %>

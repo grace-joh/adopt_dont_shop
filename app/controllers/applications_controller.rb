@@ -28,7 +28,7 @@ class ApplicationsController < ApplicationController
     if app.save
       redirect_to "/applications/#{app.id}"
     else
-      flash[:message] = app.errors.full_messages.join(', ')
+      flash.now[:message] = app.errors.full_messages.join(', ')
       render :new
     end
   end

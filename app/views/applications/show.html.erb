@@ -1,25 +1,15 @@
 <h1>Application to Adopt a Pet</h1>
 
-<p>Status: <%= @application.status %></p>
-<br>
-<p>Name: <%= @application.name %></p>
-<br>
-<p>Address: <%= "#{@application.street_address} #{@application.city}, #{@application.state} #{@application.zipcode}" %></p>
-<br>
-<p>Why my home makes a good home: <%= @application.home_description %></p>
-<br>
-<% if @application.status == "Pending" %>
-  <p>Why I would be a good owner for the pet(s) listed below: <%= @application.owner_description %></p>
-<% end %>
-<br>
+<%= render partial: "shared/app_details" %>
+
 <% unless @application.pets.empty? %>
-  <%= render "pets_to_adopt" %>
+  <%= render partial: "pets_to_adopt" %>
 <% end %>
 <br>
 <% if @application.status == "In Progress" %>
-  <%= render "pet_search" %>
+  <%= render partial: "pet_search" %>
   <br>
   <% unless @application.pets.empty? %>
-    <%= render "submit_app" %>
+    <%= render partial: "submit_app" %>
   <% end %>
 <% end %>

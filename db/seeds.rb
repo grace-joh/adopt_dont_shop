@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 ApplicationPet.destroy_all
 Application.destroy_all
-Pet.destroy_all
 Shelter.destroy_all
+Pet.destroy_all
 
 # Shelters
 @shelter1 = Shelter.create!(name: 'Helping Paws Animal Shelter', city: 'Denver', rank: 3, foster_program: true)
